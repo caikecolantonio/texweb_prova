@@ -83,6 +83,14 @@ def artigos():
 def login():
     return render_template('login.html')
  
+@app.route('/passa', methods=['POST'])
+def passa():
+        if request.method == 'POST':
+            pegou = Usuario.query.filter_by(email=request.form['email'], senha=request.form['senha']).all()
+            if len(pegou)==1:
+                return render_template('sucess.html')
+            else:
+                return render_template('login.html')
 
 
 
