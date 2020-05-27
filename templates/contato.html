@@ -9,6 +9,28 @@
     <h1 class="mt-5 text-light">Contate conosco</h1>
   </center>
 
-  <a class="btn btn-success" href="inicio">Voltar ao inicio</a>
-  <a class="btn btn-primary" href="{{ url_for('mostra_inicio') }}">Voltar ao inicio</a>
+  <div class="container">    
+    <div class="row"> <!-- linha -->
+      <div class="col-12 col-md-6 coluna">
+          <img src="/static/img/html5_css3.png" alt="logo da empresa" height="200">
+      </div>
+      <div class="col-12 col-md-6 coluna">
+    <form action="" method="POST" class="text-center">
+        <h1 class="h3 m-3 p-1">Seus dados</h1>
+        <label for="id_nome" class="sr-only">Nome:</label>
+        <input class="form-control m-2" required type="text">
+        <label for="id_nome" class="sr-only">Sobrenome:</label>
+        <input class="form-control m-2" required type="text">
+        <label for="id_email" class="sr-only">Email:</label>
+        <input class="form-control m-2" type="email" id="id_email" placeholder="Insira seu email" required autofocus name="email">
+        <input class="form-control m-2" required type="text">
+        <label for="id_nome" class="sr-only">Assunto:</label>
+        <input class="form-control m-2" required type="text">
+        <label for="id_nome" class="sr-only">Mensagem:</label>
+        <input class="form-control m-2" required type="text">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+      </div>
+    </div>
+  </div>
   {% endblock content %}
