@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-# from pytz import timezone
+from pytz import timezone
 
 app = Flask(__name__)
 
@@ -9,17 +9,13 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///bancoDeDados.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-#####
 
-##### Criar o modelo para o registro do usuario
-# class Usuario(db.Model):
-#     codigo = 
 
 class Apontamento(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     nome_usuario = db.Column(db.String(25), nullable=True)
-    hora = db.Column(db.DateTime, default=datetime.now)
-    # hora = db.Column(db.DateTime, default=datetime.now().astimezone(timezone('America/Sao_Paulo')))
+    #hora = db.Column(db.DateTime, default=datetime.now)
+    hora = db.Column(db.DateTime, default=datetime.now().astimezone(timezone('America/Sao_Paulo')))
     
     @property
     def serializar(self):
@@ -31,22 +27,17 @@ class Apontamento(db.Model):
 
 class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    email = db.Column(db.String(50), unique=True, nullable=True)
-    senha = db.Column(db.String(50), nullable=True)
+    email = db.Column(db.String(50), unique=True, nullable=False)
+    senha = db.Column(db.String(50), nullable=False)
     
 class Contato(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    nome = db.Column(db.String(25), nullable=True)
-    sobrenome = db.Column(db.String(25), nullable=True)
-    email = db.Column(db.String(25), nullable=True)
-    assunto = db.Column(db.String(25), nullable=True)
-    mensagem = db.Column(db.String(255), nullable=True)    
-# class Usuario(db.Model)
-#     login = 
-#     email = 
+    nome = db.Column(db.String(25), nullable=False)
+    sobrenome = db.Column(db.String(25), nullable=False)
+    email = db.Column(db.String(25), nullable=False)
+    assunto = db.Column(db.String(25), nullable=False)
+    mensagem = db.Column(db.String(255), nullable=False)    
 
-
-# db.create_all()
 
 @app.route('/inicio')
 @app.route('/')
@@ -108,18 +99,6 @@ def envia():
         db.session.commit()
         return render_template('contato.html')
 
-
-
-
-# @app.route('/login')
-# def login():
-#     return render_template('login.html')
-
-
-
-
-
-## Para rodar o projeto em desenvolvimento
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
