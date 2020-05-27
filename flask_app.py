@@ -66,7 +66,7 @@ def sobre():
     return render_template('sobre.html')
 
 @app.route('/artigos')
-def sobre():
+def artigos():
     return render_template('artigos.html')
 
 
