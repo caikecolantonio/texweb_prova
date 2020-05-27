@@ -21,7 +21,10 @@ class Apontamento(db.Model):
     hora = db.Column(db.DateTime, default=datetime.now)
     # hora = db.Column(db.DateTime, default=datetime.now().astimezone(timezone('America/Sao_Paulo')))
 
-# class Usuario(db.Model)
+class Usuario(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    email = db.Column(db.String(50), unique=True, nullable=True)
+    senha = db.Column(db.String(50), nullable=True)# class Usuario(db.Model)
 #     login = 
 #     email = 
 
@@ -72,6 +75,15 @@ def artigos():
 @app.route('/login')
 def login():
     return render_template('login.html')
+
+@app.route('/passa', methods=['POST'])
+def passa():
+        if request.method == 'POST':
+            pegou = Usuario.query.filter_by(email=request.form['email'], senha=request.form['senha']).all()
+            if len(pegou)==1:
+                return render_template('sucess.html')
+            else:
+                return render_template('login.html')    
 
 
 
