@@ -20,12 +20,7 @@ class Apontamento(db.Model):
     nome_usuario = db.Column(db.String(25), nullable=True)
     hora = db.Column(db.DateTime, default=datetime.now)
     # hora = db.Column(db.DateTime, default=datetime.now().astimezone(timezone('America/Sao_Paulo')))
-
-   
-# class Usuario(db.Model)
-#     login = 
-#     email = 
-
+    
     @property
     def serializar(self):
         return {
@@ -33,6 +28,23 @@ class Apontamento(db.Model):
             'nome_usuario': self.nome_usuario,
             'hora': str(self.hora)[11:16]
         }
+
+class Usuario(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    email = db.Column(db.String(50), unique=True, nullable=True)
+    senha = db.Column(db.String(50), nullable=True)
+    
+class Contato(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    nome = db.Column(db.String(25), nullable=True)
+    sobrenome = db.Column(db.String(25), nullable=True)
+    email = db.Column(db.String(25), nullable=True)
+    assunto = db.Column(db.String(25), nullable=True)
+    mensagem = db.Column(db.String(255), nullable=True)    
+# class Usuario(db.Model)
+#     login = 
+#     email = 
+
 
 # db.create_all()
 
