@@ -24,7 +24,16 @@ class Apontamento(db.Model):
 class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     email = db.Column(db.String(50), unique=True, nullable=True)
-    senha = db.Column(db.String(50), nullable=True)# class Usuario(db.Model)
+    senha = db.Column(db.String(50), nullable=True)
+    
+class Contato(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    nome = db.Column(db.String(25), nullable=True)
+    sobrenome = db.Column(db.String(25), nullable=True)
+    email = db.Column(db.String(25), nullable=True)
+    assunto = db.Column(db.String(25), nullable=True)
+    mensagem = db.Column(db.String(255), nullable=True)    
+# class Usuario(db.Model)
 #     login = 
 #     email = 
 
@@ -60,9 +69,6 @@ def funcionarios():
         return j
         
 
-@app.route('/contato')
-def contato():
-    return render_template('contato.html')
 
 @app.route('/sobre')
 def sobre():
@@ -83,7 +89,20 @@ def passa():
             if len(pegou)==1:
                 return render_template('sucess.html')
             else:
-                return render_template('login.html')    
+                return render_template('login.html')   
+
+
+@app.route('/contato', methods=['POST'])
+def contato():
+    if request.method == 'POST':
+        contato = Contato(nome=request.form['nome'],
+                          sobrenome=request.form['sobrenome'],
+                          email=request.form['email'],
+                          assunto=request.form['assunto'],
+                          mensagem=request.form['mensagem'])
+        db.session.add(contato)
+        db.session.commit()
+        return render_template('contato.html') 
 
 
 
