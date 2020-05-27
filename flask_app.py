@@ -92,6 +92,22 @@ def passa():
             else:
                 return render_template('login.html')
 
+@app.route('/contato')
+def contato():
+    return render_template('contato.html')
+
+@app.route('/envia', methods=['POST'])
+def envia():
+    if request.method == 'POST':
+        contato = Contato(nome=request.form['nome'],
+                          sobrenome=request.form['sobrenome'],
+                          email=request.form['email'],
+                          assunto=request.form['assunto'],
+                          mensagem=request.form['mensagem'])
+        db.session.add(contato)
+        db.session.commit()
+        return render_template('contato.html')
+
 
 
 
