@@ -65,6 +65,11 @@ def contato():
 def sobre():
     return render_template('sobre.html')
 
+@app.route('/artigos')
+def sobre():
+    return render_template('artigos.html')
+
+
 
 # @app.route('/login')
 # def login():
