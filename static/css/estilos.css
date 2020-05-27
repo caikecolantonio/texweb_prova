@@ -17,17 +17,6 @@
 	width: 8em;
 }
 
-body {
-    font-family: 'Alegreya', serif;
-    text-align: center;
-}
-
-.caixa {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
 .artigos {
     border: 2px solid #2ea4ff;
     border-radius: 20px;
