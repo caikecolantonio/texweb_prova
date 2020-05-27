@@ -1,0 +1,45 @@
+{% extends '_base.html' %}
+
+{% block title %}
+Login | Empresa
+{% endblock title %}
+
+{% block estilos %}
+<link href="static/css/login.css" rel="stylesheet">
+{% endblock estilos %}
+
+{% block content %}
+<!--   <form class="form-signin text-center">
+    <div class="display-4 text-primary mb-4">Empresa</div>
+    <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+    <label for="inputEmail" class="sr-only">Email</label>
+    <input type="email" id="inputEmail" class="form-control m-1" placeholder="Email" required autofocus>
+    <label for="inputPassword" class="sr-only">Senha</label>
+    <input type="password" id="inputPassword" class="form-control m-1" placeholder="Senha" required>
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Lembre-me
+      </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Fazer login</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2002-2020</p>
+  </form> -->
+
+  <div class="container">    
+    <div class="row"> <!-- linha -->
+      <div class="col-12 col-md-6 coluna">
+          <img src="/static/img/html5_css3.png" alt="logo da empresa" height="200">
+      </div>
+      <div class="col-12 col-md-6 coluna">
+          <form action="" method="POST" class="text-center">
+              <h1 class="h3 m-3 p-1">Logar</h1>
+              <label for="id_email" class="sr-only">Email</label>
+              <input class="form-control m-2" type="email" id="id_email" placeholder="Insira seu email" required autofocus name="email">
+              <label for="id_senha" class="sr-only">Senha</label>
+              <input class="form-control m-2" type="password" id="id_senha" placeholder="Insira sua senha" required name="senha">
+              <button type="submit" class="btn btn-primary">Fazer login</button>
+          </form>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
